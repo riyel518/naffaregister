@@ -1,0 +1,435 @@
+<div class="form-style-10">
+<h1>Register Now!<span>Early Bird Special Deadline - April 29, 2017</span></h1>
+<form>
+    <div class="section">Personal Information </div>
+    <div class="inner-wrap">
+        <div class="row">
+         <div class="col-xs-12 col-md-6">   
+        <label>First Name <input type="text" name="firstname" [(ngModel)] = "conference_attendee.first_name" /></label>
+      
+          </div>
+          <div class="col-xs-12 col-md-6"> 
+        <label>Last Name <input type="text" name="lastname"  [(ngModel)] = "conference_attendee.last_name"/></label>
+          </div>
+
+        <div class="col-xs-12 col-md-12"> 
+        <label>Address <input type="text" name="address" [(ngModel)] = "conference_attendee.address1" /></label>
+          </div>
+
+          <div class="col-xs-12 col-md-6"> 
+        <label>City <input type="text" name="city" [(ngModel)] = "conference_attendee.city" /></label>
+          </div>
+
+           <div class="col-xs-12 col-md-6"> 
+        <label>State <input type="text" name="state"  [(ngModel)] = "conference_attendee.state" /></label>
+          </div>
+        
+            <div class="col-xs-12 col-md-6"> 
+          <label>Zipcode <input type="text" name="zipcode" [(ngModel)] = "conference_attendee.zip"/></label>
+          </div>
+
+            <div class="col-xs-12 col-md-6"> 
+          <label>Phone <input type="text" name="phone" [(ngModel)] = "conference_attendee.night_phone_a"/></label>
+
+
+          </div>
+        
+         <div class="col-xs-12 col-md-12"> 
+          <label>Email <input type="text" name="email"  [(ngModel)] = "conference_attendee.email"/></label>
+          
+          </div>
+
+            <div class="col-xs-12 col-md-12"> 
+          <label>Email <input type="hidden" name="email"  [(ngModel)] = "conference_attendee.email"/></label>
+          
+          </div>
+
+
+
+          <br> <br> 
+ 
+           &nbsp; &nbsp;  Registration Fee:
+            
+            <br><br>
+
+    <div (click)="calculatepayments()">        
+
+         <div class="col-xs-12 col-md-12"> 
+           <input #confee type="checkbox" (change)="cfee = confee.checked"/> Conference Fee
+
+            <div *ngIf = "cfee"  style="padding-left: 2%; ">
+                
+                <br>
+
+                 <label>
+                        <input #individual name="conference" type="radio" value="1"  (click)="conference_attendee.SetConferenceFee(individual.value)" />
+                         Individual Conference delegate --- $ {{individualFee}} {{earlyBirdMsg}} - {{conference_attendee.conferenceFees}}
+                </label> 
+        
+                 <label>
+                       <input #young name="conference" type="radio"  value="2" (click)="conference_attendee.SetConferenceFee(young.value)"/>
+                        Young professional and Student delegate under age 30 (with valid Student ID) --- $ {{youngFee}} {{earlyBirdMsg}}
+                </label>
+ 
+                         <label>
+                       <input #none1 name="conference" type="radio"  value="3" (click)="conference_attendee.SetConferenceFee(none1.value)"/>
+                         Not attending conference
+                </label>
+                 
+
+            </div>
+
+          </div>
+      
+        <div class="col-xs-12 col-md-12"> 
+           <input #galafees type="checkbox" (change)="galaselect = galafees.checked"/>  Gala Fee
+
+
+                <div *ngIf = "galaselect"  style="padding-left: 2%; ">
+                
+                <br>
+
+                 <label>
+                        <input #individualgala name="gala" type="radio" value="1" (click)="conference_attendee.SetGalaFee(individualgala.value) " />
+                         Individual  --- $ {{galaindividualfee}} {{earlyBirdMsg}}
+                </label> 
+        
+                 <label>
+                       <input #studentgala name="gala" type="radio"  value="2" (click)="conference_attendee.SetGalaFee(studentgala.value)"/>
+                        Student under age 30 (with valid Student ID) --- $ {{galastudentfee}} {{earlyBirdMsg}}
+                        
+
+                </label>
+ 
+                      <label>
+                       <input #none2 name="gala" type="radio"  value="3" (click)="conference_attendee.SetGalaFee(none2.value)"/>
+                         Not attending gala
+                </label>
+               
+                 
+
+            </div>
+
+
+          </div>
+
+            <div class="col-xs-12 col-md-12"> 
+           <input #vendorsfees type="checkbox" (change)="vendorselect = vendorsfees.checked"/>   Vendor Fee 
+
+            <div *ngIf = "vendorselect"  style="padding-left: 2%; ">
+                <br>
+
+               <label>
+                        <input #businessfee name="vendor" type="radio" value="1"  (click)="conference_attendee.SetVendorFee(businessfee.value)" />
+                         Business (no banner) --- $ 75
+
+                </label> 
+                  
+                  
+                         <label> &nbsp; &nbsp; Sponsor --------------------- included</label>
+                         <label> &nbsp; &nbsp; Non-Profit ------------------ free</label>
+                    
+                                   <label>
+                        <input #none3 name="vendor" type="radio" value="2"  (click)="conference_attendee.SetVendorFee(none3.value)" />
+                         None
+
+                </label> 
+              
+            </div>
+     
+
+
+          </div>
+
+            <div class="col-xs-12 col-md-12"> 
+             
+
+            <input #souvenirfee type="checkbox" (change)="sfee= souvenirfee.checked"/>  Souvenir Program Personal Greetings (Deadline for all submissions: June 30, 2017)
+
+            
+                  <div *ngIf = "sfee"  style="padding-left: 2%; ">
+                
+                <br>
+
+                 <label>
+                        <input #fullpage name="souvenir" type="radio" value="1" (click)="conference_attendee.SetSouvenirFee(fullpage .value) " />
+                         Full Page ----------- $150
+                </label> 
+        
+                 <label>
+                       <input #halfpage name="souvenir" type="radio"  value="2" (click)="conference_attendee.SetSouvenirFee(halfpage.value)"/>
+                        Half Page ----------- $100
+                        
+
+                </label>
+
+                    <label>
+                       <input #quarterpage name="souvenir" type="radio"  value="3" (click)="conference_attendee.SetSouvenirFee(quarterpage.value)"/>
+                        Quarter page --------$75
+                        
+
+                </label>
+
+                             <label>
+                       <input #none4 name="souvenir" type="radio"  value="4" (click)="conference_attendee.SetSouvenirFee(none4.value)"/>
+                         None
+                </label>
+ 
+                     
+               
+                 
+
+            </div>    
+
+               
+             
+          </div>
+
+            <br>
+             <div class="col-xs-12 col-md-12"> 
+             
+     <br>
+
+       Additional Guest:  <input type="Number"  name="guetnumber" [(ngModel)]="interNum" min="0" style="height: 38px; width: 55px; margin-bottom: 2%" />  
+        
+     
+
+       <button (click)="interatemyNumber()" style="height: 25px;" alt="Add"> <p>  +  <p> </button>
+     
+
+
+          </div>
+ 
+
+</div>
+
+
+        </div>
+                 
+ 
+                      <br>
+
+                     
+                  
+                    Fees: $ {{conference_attendee.totalFee}}
+
+
+      
+
+    </div>
+
+
+ 
+   
+    <div *ngFor="let items of guestNumber; let y = index">
+     <br>
+    <div class="section">Guest: {{y + 1}}</div>
+    <div class="inner-wrap">
+      <div class="row">
+        <div class="col-xs-12 col-md-6"> 
+        <label>First Name <input type="text" name="firstname" [(ngModel)] = "conference_attendee.my_guest[y].first_name" /></label>
+       
+       
+       
+      
+          </div>
+          <div class="col-xs-12 col-md-6"> 
+        <label>Last Name <input type="text" name="lastname"  [(ngModel)] = "conference_attendee.my_guest[y].last_name"/></label>
+
+         {{conference_attendee.my_guest[y].last_name}}
+
+          </div>
+
+
+                    <br> <br> 
+ 
+           &nbsp; &nbsp;  Registration Fee:
+            
+            <br><br>
+
+<div (click)="calculatepayments()"> 
+
+         <div class="col-xs-12 col-md-12"> 
+           <input #confee type="checkbox" (change)="cfee = confee.checked"/> Conference Fee
+
+            <div *ngIf = "cfee"  style="padding-left: 2%; ">
+                
+                <br>
+
+                 <label>
+                        <input #individual name="conference" type="radio" value="1"  (click)="conference_attendee.my_guest[y].SetConferenceFee(individual.value)" />
+                         Individual Conference delegate --- $ {{individualFee}} {{earlyBirdMsg}} - {{conference_attendee.my_guest[y].conferenceFees}}
+                </label> 
+        
+                 <label>
+                       <input #young name="conference" type="radio"  value="2" (click)="conference_attendee.my_guest[y].SetConferenceFee(young.value)"/>
+                        Young professional and Student delegate under age 30 (with valid Student ID) --- $ {{youngFee}} {{earlyBirdMsg}}
+                </label>
+ 
+                      
+ 
+                         <label>
+                       <input #non1 name="conference" type="radio"  value="3" (click)="conference_attendee.my_guest[y].SetConferenceFee(non1.value)"/>
+                         Not attending conference
+                </label>
+                 
+                   
+
+            </div>
+
+          </div>
+      
+        <div class="col-xs-12 col-md-12"> 
+           <input #galafees type="checkbox" (change)="galaselect = galafees.checked"/>  Gala Fee
+
+
+                <div *ngIf = "galaselect"  style="padding-left: 2%; ">
+                
+                <br>
+
+                 <label>
+                        <input #individualgala name="gala" type="radio" value="1" (click)="conference_attendee.my_guest[y].SetGalaFee(individualgala.value) " />
+                         Individual  --- $ {{galaindividualfee}} {{earlyBirdMsg}}
+                </label> 
+        
+                 <label>
+                       <input #studentgala name="gala" type="radio"  value="2" (click)="conference_attendee.my_guest[y].SetGalaFee(studentgala.value)"/>
+                        Student under age 30 (with valid Student ID) --- $ {{galastudentfee}} {{earlyBirdMsg}}
+                        
+
+                </label>
+
+                     <label>
+                       <input #non2 name="gala" type="radio"  value="3" (click)="conference_attendee.my_guest[y].SetGalaFee(non2.value)"/>
+                         Not attending conference
+                </label>
+ 
+               
+                 
+
+            </div>
+
+
+          </div>
+
+            <div class="col-xs-12 col-md-12"> 
+           <input #vendorsfees type="checkbox" (change)="vendorselect = vendorsfees.checked"/>   Vendor Fee 
+
+            <div *ngIf = "vendorselect"  style="padding-left: 2%; ">
+                <br>
+
+               <label>
+                        <input #businessfee name="vendor" type="radio" value="1"  (click)="conference_attendee.my_guest[y].SetVendorFee(businessfee.value)" />
+                         Business (no banner) --- $ 75
+
+                </label> 
+                  
+                  
+                         <label> &nbsp; &nbsp; Sponsor --------------------- included</label>
+                         <label> &nbsp; &nbsp; Non-Profit ------------------ free</label>
+                    
+                                                  <label>
+                        <input #non3 name="vendor" type="radio" value="2"  (click)="conference_attendee.my_guest[y].SetVendorFee(non3.value)" />
+                         None
+
+                </label> 
+              
+            </div>
+     
+
+
+          </div>
+
+            <div class="col-xs-12 col-md-12"> 
+             
+
+            <input #souvenirfee type="checkbox" (change)="sfee= souvenirfee.checked"/>  Souvenir Program Personal Greetings (Deadline for all submissions: June 30, 2017)
+
+            
+                  <div *ngIf = "sfee"  style="padding-left: 2%; ">
+                
+                <br>
+
+                 <label>
+                        <input #fullpage name="souvenir" type="radio" value="1" (click)="conference_attendee.my_guest[y].SetSouvenirFee(fullpage .value) " />
+                         Full Page ----------- $150
+                </label> 
+        
+                 <label>
+                       <input #halfpage name="souvenir" type="radio"  value="2" (click)="conference_attendee.my_guest[y].SetSouvenirFee(halfpage.value)"/>
+                        Half Page ----------- $100
+                        
+
+                </label>
+
+                    <label>
+                       <input #quarterpage name="souvenir" type="radio"  value="3" (click)="conference_attendee.my_guest[y].SetSouvenirFee(quarterpage.value)"/>
+                        Quarter page --------$75
+                        
+
+                </label>
+
+
+                                             <label>
+                       <input #non4 name="souvenir" type="radio"  value="4" (click)="conference_attendee.my_guest[y].SetSouvenirFee(non4.value)"/>
+                         None
+                </label>
+ 
+               
+                 
+
+            </div>    
+
+
+       
+               
+             <br> <br>
+          </div>
+
+           <br> <br>
+        &nbsp; &nbsp;   Fees: $ {{conference_attendee.my_guest[y].GetTotalFee()}}
+</div>
+
+   </div>
+
+     </div>
+         
+    </div>
+
+<br>
+        <div class="section">Fee Due:  </div>
+    <div class="inner-wrap">
+ 
+      Attendee fee: &nbsp; --------- ${{conference_attendee.totalFee}} <br>
+      
+      <ul>
+
+     <li *ngFor="let items of guestNumber; let y = index">
+
+      Guest {{y+1}} fee -----  $ {{conference_attendee.my_guest[y].GetTotalFee()}}
+
+     </li> 
+     </ul>
+      
+      -----------------------------------<br>
+      
+      Processing fee: &nbsp;--------3% <br>
+    
+      Total fee due: &nbsp;----------$ {{conference_attendee.total_payments}}
+
+   </div> 
+
+
+    <div class="button-section">
+     <input type="submit" name="Sign Up" (click)=JSONConsole() />
+
+    
+
+  
+    </div>
+
+</form>
+
+
+
+</div>
